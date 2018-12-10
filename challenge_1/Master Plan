@@ -1,0 +1,18 @@
+Master Plan
+
+1. Design board
+	- will have board element
+	- with nested square elements 3 X 3
+	- ids 1-9 for click handling
+	- reset button
+	- way to select player X or O
+
+2. Functionality
+	- On load, empty board
+	- Player 'x' always goes first 
+	- On click, place an X or O in square depending on player X or O clicking
+	- if three Xs or Os in a row horizontally, vertically, or diagonally are clicked 
+		- player X or O wins
+	- if all options exhausted, tie/draw
+	- Reset Button
+		-clears board (but does not reload page)

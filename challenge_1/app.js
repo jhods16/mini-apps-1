@@ -2,7 +2,7 @@
 
 document.addEventListener("DOMContentLoaded", function(event) {
     var playerElement = document.getElementsByClassName('player')[0];
-    playerElement.innerHTML += "Player X: Your Move";
+    playerElement.innerHTML += 'Player X: Your Move';
     var turnCount = 0;
 
     addTurnHandler(turnCount);
@@ -38,15 +38,28 @@ var assessWin = function(piece) {
   [boxes[6], boxes[7], boxes[8]],
   ]
 
-  for (var i = 0; i < board.length; i++) {
-    if (board[i][0].innerHTML === piece && board[i][1].innerHTML === piece && board[i][2].innerHTML === piece 
-          || board[0][i].innerHTML === piece && board[1][i].innerHTML === piece && board[2][i].innerHTML === piece) {
-      alert("Player " + piece + " wins!")
-      return;
-    } else if (board[0][0].innerHTML === piece && board[1][1].innerHTML === piece && board[2][2].innerHTML === piece 
-          || board[0][2].innerHTML === piece && board[1][1].innerHTML === piece && board[2][0].innerHTML === piece) {
-      alert("Player " + piece + " wins!")
-      return;
+  for(var j = 0; j < boxes.length; j++) {
+    if (boxes[j].innerHTML === piece) {
+      count++
+    }
+  }
+
+
+  if (count >= 3) {
+    for (var i = 0; i < board.length; i++) {
+      if (board[i][0].innerHTML === piece && board[i][1].innerHTML === piece && board[i][2].innerHTML === piece 
+            || board[0][i].innerHTML === piece && board[1][i].innerHTML === piece && board[2][i].innerHTML === piece) {
+        alert('Player ' + piece + ' wins!')
+        return;
+      } else if (board[0][0].innerHTML === piece && board[1][1].innerHTML === piece && board[2][2].innerHTML === piece 
+            || board[0][2].innerHTML === piece && board[1][1].innerHTML === piece && board[2][0].innerHTML === piece) {
+        alert('Player ' + piece + ' wins!')
+        return;
+      } else  if (count === 5) {
+        alert('Tie!')
+        return;
+      }
+    }
   }
 
 }
@@ -59,26 +72,25 @@ var reset = function() {
   var playerElement = document.getElementsByClassName('player')[0]
 
   for (var i = 0; i < boxes.length; i++) {
-    boxes[i].innerHTML = "";
+    boxes[i].innerHTML = '';
   }
-  playerElement.innerHTML = "Player X: Your Move";
+  playerElement.innerHTML = 'Player X: Your Move';
 }
 
 
 /* ------------ Helper Functions --------------------- */
 
 var changePlayer = function() {
-  var playerElement = document.getElementsByClassName('player')[0]
+  var playerElement = document.getElementsByClassName('player')[0];
   var playerPiece;
 
-  if (playerElement.innerHTML === "Player X: Your Move") {
+  if (playerElement.innerHTML === 'Player X: Your Move') {
     playerPiece = 'X';
-    playerElement.innerHTML = "Player O: Your Move";
-  } else if (playerElement.innerHTML === "Player O: Your Move") {
+    playerElement.innerHTML = 'Player O: Your Move';
+  } else if (playerElement.innerHTML === 'Player O: Your Move') {
     playerPiece = 'O';
-    playerElement.innerHTML = "Player X: Your Move";
+    playerElement.innerHTML = 'Player X: Your Move';
   }
   addPiece.call(this, playerPiece);
 
 }
- 

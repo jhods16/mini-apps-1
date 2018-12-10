@@ -65,8 +65,9 @@ h1 {
 	margin: 10px;
 }
 .box {
-	height: 100px;
-	width: 100px;
-	padding: 3px
-	margin: 0px;
+	min-height: 100px;
+	min-width: 100px;
+	overflow: hidden;
+	padding: 5px;
+	margin: auto;
 }

@@ -28,10 +28,12 @@ var addPiece = function() {
 
 var reset = function() {
   var boxes = document.getElementsByClassName('box');
+  var playerElement = document.getElementsByClassName('player')[0]
 
   for (var i = 0; i < boxes.length; i++) {
     boxes[i].innerHTML = "";
   }
+  playerElement.innerHTML = "Player X: Your Move";
 }
 
 

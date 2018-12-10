@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     playerElement.innerHTML += "Player X: Your Move";
 
     addTurnHandler();
+    document.getElementsByTagName('button')[0].addEventListener('click', reset)
 })
 
 /* ------------ Game Play --------------------- */
@@ -12,9 +13,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
 /* Turns */
 
 var addTurnHandler = function() {
-  var boxes = document.getElementsByClassName('box')
+  var boxes = document.getElementsByClassName('box');
 
-  for(var i = 0; i < boxes.length; i++) {
+  for (var i = 0; i < boxes.length; i++) {
     boxes[i].addEventListener('click', changePlayer);
   }
 }
@@ -24,6 +25,14 @@ var addPiece = function() {
   this.innerHTML = piece;
 }
 /* ------------ Reset --------------------- */
+
+var reset = function() {
+  var boxes = document.getElementsByClassName('box');
+
+  for (var i = 0; i < boxes.length; i++) {
+    boxes[i].innerHTML = "";
+  }
+}
 
 
 /* ------------ Helper Functions --------------------- */

@@ -47,6 +47,15 @@ table {
 	border-spacing: 0;
 }
 
+h1, p, button {
+	display: block;
+	margin: 10px;
+}
+
+h1 {
+	font-weight: bold;
+}
+
 .board, .box {
 	display: inline-block;
 	border: 1px solid black;

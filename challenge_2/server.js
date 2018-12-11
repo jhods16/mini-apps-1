@@ -14,15 +14,14 @@ app.get('/', (req, res) => {
 // respond to post request
 app.post('/', (req, res) => {
 //  receive incoming data
+//  convert to CSV
   jsonToCSVConverter(req.body, (result) => {
-    console.log(result);
-    res.send('posted')
-  })
-//  convert to CSV 
 //  send back CSV data
+    console.log(result);
+    res.send(result)
+  })
   
 })
-//  parse?
 //  send back empty form?
 app.listen(port, () => {
   console.log(`listening on ${port}`);

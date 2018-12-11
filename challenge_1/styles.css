@@ -47,27 +47,63 @@ table {
 	border-spacing: 0;
 }
 
-h1, p, button {
-	display: block;
-	margin: 10px;
+body {
+	background-color: #82D0D0;
+	text-align: center;
 }
 
-h1 {
+h2, p, button {
+	display: block;
+	margin: 10px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+h2 {
+	display: inline-block;
+	margin-bottom: 3px;
+	padding: 5px;
 	font-weight: bold;
+	font-size: 40px;
+	border: 1px solid black;
+}
+
+button {
+	height: 50px;
+	width: 125px;
+	background-color: black;
+	color: white;
+	font-weight: bold;
+	font-size: 20px;
+	font-family: serif;
+	border: 1px solid black;
+}
+
+.middleh2 {
+	background-color: black;
+	color: white;
 }
 
 .board, .box {
-	display: inline-block;
+	display: flex;
 	border: 1px solid black;
+	justify-content: center;
+	align-items: center;
 }
 
 .board {
 	margin: 10px;
+	width: 482px;
+	vertical-align: middle;
+	margin-left: auto;
+	margin-right: auto;	
 }
 .box {
-	min-height: 100px;
-	min-width: 100px;
+	height: 150px;
+	width: 150px;
 	overflow: hidden;
 	padding: 5px;
 	margin: auto;
+	font-weight: bold;
+	font-size: xx-large;
 }

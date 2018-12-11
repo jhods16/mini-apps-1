@@ -38,9 +38,9 @@ var assessWin = function(piece) {
   [boxes[6], boxes[7], boxes[8]],
   ]
 
-  for(var j = 0; j < boxes.length; j++) {
+  for (var j = 0; j < boxes.length; j++) {
     if (boxes[j].innerHTML === piece) {
-      count++
+      count++;
     }
   }
 
@@ -50,18 +50,17 @@ var assessWin = function(piece) {
       if (board[i][0].innerHTML === piece && board[i][1].innerHTML === piece && board[i][2].innerHTML === piece 
             || board[0][i].innerHTML === piece && board[1][i].innerHTML === piece && board[2][i].innerHTML === piece) {
         alert('Player ' + piece + ' wins!')
-        return;
+        return highlightWins(board, piece);
       } else if (board[0][0].innerHTML === piece && board[1][1].innerHTML === piece && board[2][2].innerHTML === piece 
             || board[0][2].innerHTML === piece && board[1][1].innerHTML === piece && board[2][0].innerHTML === piece) {
         alert('Player ' + piece + ' wins!')
-        return;
+        return highlightWins(board, piece);
       } else  if (count === 5) {
-        alert('Tie!')
+        alert('Tie!');
         return;
       }
     }
   }
-
 }
 
 
@@ -93,4 +92,15 @@ var changePlayer = function() {
   }
   addPiece.call(this, playerPiece);
 
+}
+
+var highlightWins = function(board, piece) {
+  for (var i = 0; i < board.length; i++) {
+    for (var j = 0; j < board.length; j++) {
+      if (board[i][j].innerHTML === piece) {
+        board[i][j].style.backgroundColor = 'black';
+        board[i][j].style.color = 'white';
+      }
+    }
+  }
 }

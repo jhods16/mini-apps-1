@@ -13,25 +13,23 @@ var submitJSON = function() {
     e.preventDefault();
     text = $('#json').val();
     post(text, (result) => {
-      $('.CSV_display').append(result);
-    });
-  })
-  
-}
-
 // display incoming CSV data from server
 //  append text to the CSV_display area
-
+      var lines = result.split('\n');
+      for (var i = 0; i < lines.length; i++) {
+        $('.CSV_display').append(lines[i] + '<br>');
+      }
+    });
+  }) 
+}
 
 // post request
-//  send data in JSON format to server
-//  on completion, call display handler
-
 var post = function(content, callback) {
   http.open('POST', 'http://localhost:3000', true);
   http.setRequestHeader("Content-Type", "application/json");
   http.onreadystatechange = function() {
     if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+    //  on completion, call display handler
       callback(http.response)
     }
   }

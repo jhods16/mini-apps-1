@@ -6,19 +6,18 @@ $(document).ready(function() {
   submitJSON();
 })
 // listen for click on submit button
-
+//  on submit, send post request
 var submitJSON = function() {
   var text; 
   $('#submit').click((e) => {
     e.preventDefault();
     text = $('#json').val();
-    post(text, () => {
-      console.log('post submitted')
+    post(text, (result) => {
+      $('.CSV_display').append(result);
     });
   })
   
 }
-//  on submit, send post request
 
 // display incoming CSV data from server
 //  append text to the CSV_display area
@@ -31,12 +30,10 @@ var submitJSON = function() {
 var post = function(content, callback) {
   http.open('POST', 'http://localhost:3000', true);
   http.setRequestHeader("Content-Type", "application/json");
-  console.log(content)
   http.onreadystatechange = function() {
     if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
-      console.log('done')
+      callback(http.response)
     }
   }
   http.send(content);
-  callback();
 }

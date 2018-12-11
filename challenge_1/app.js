@@ -10,7 +10,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
 })
 
 /* ------------ Game Play --------------------- */
-
+var board = {
+  '0': [0, 0, 0],
+  '1': [0, 0, 0],
+  '2': [0, 0, 0]
+};
 /* Turns */
 
 var addTurnHandler = function(turnCount) {
@@ -24,7 +28,18 @@ var addTurnHandler = function(turnCount) {
 var addPiece = function() {
   var piece = arguments[0];
   this.innerHTML = piece;
-  assessWin(piece)
+  var y = this.id.toString()[0];
+  var x = this.id.toString()[1];
+  board[x][y] = piece;
+  console.log(board)
+  assessWinBoard(board)
+}
+
+var assessWinBoard = function(board) {
+  console.log(board[0][1])
+  if (board[0][0] === board[0][1] && board[0][0] === board[0][2]) {
+    alert('Player ' + board[0][0] + ' wins!')
+  }
 }
 
 /* Assess Win */

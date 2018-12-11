@@ -7,9 +7,9 @@ app.use(bodyParser.json())
 
 
 // respond to get request
-app.get('/', (req, res) => {
-  console.log('hi')
-})
+// app.get('/', (req, res) => {
+//   console.log('hi')
+// })
 
 // respond to post request
 app.post('/', (req, res) => {
@@ -17,7 +17,6 @@ app.post('/', (req, res) => {
 //  convert to CSV
   jsonToCSVConverter(req.body, (result) => {
 //  send back CSV data
-    console.log(result);
     res.send(result)
   })
   

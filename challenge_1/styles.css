@@ -52,11 +52,12 @@ body {
 	text-align: center;
 }
 
-h2, p, button {
+h2, button, .player {
 	display: block;
 	margin: 10px;
 	margin-left: auto;
 	margin-right: auto;
+	font-weight: bold;
 }
 
 h2 {
@@ -82,6 +83,44 @@ button {
 .middleh2 {
 	background-color: black;
 	color: white;
+}
+
+.gameinfo {
+	display: grid;
+	width: 300px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.player {
+
+}
+
+.scoreboard {
+	display: flex;
+	margin: 0px;
+	border-bottom: 2px solid black;
+	justify-content: center;
+	align-items: center;
+	padding: 1px;
+}
+
+.scores {
+	display: grid;
+	grid-row-start: 2;
+	grid-column-start: 2;	
+}
+
+.xscore, .oscore {
+	display: grid;
+	grid-row-start: 2;
+	width: 1fr;
+	border-left: 1px solid black;
+}
+
+.xscore {
+	border-right: 1px solid black;
+	border-left: none;
 }
 
 .board, .box {

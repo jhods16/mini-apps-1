@@ -29,7 +29,6 @@ var addPiece = function() {
 
 /* Assess Win */
 var assessWin = function(piece) {
-  // if there are three in a row
   var boxes = document.getElementsByClassName('box');
   var count = 0;
   var board = [
@@ -44,16 +43,17 @@ var assessWin = function(piece) {
     }
   }
 
-
   if (count >= 3) {
     for (var i = 0; i < board.length; i++) {
       if (board[i][0].innerHTML === piece && board[i][1].innerHTML === piece && board[i][2].innerHTML === piece 
             || board[0][i].innerHTML === piece && board[1][i].innerHTML === piece && board[2][i].innerHTML === piece) {
         alert('Player ' + piece + ' wins!')
+        updateScoreboard(piece);
         return highlightWins(board, piece);
       } else if (board[0][0].innerHTML === piece && board[1][1].innerHTML === piece && board[2][2].innerHTML === piece 
             || board[0][2].innerHTML === piece && board[1][1].innerHTML === piece && board[2][0].innerHTML === piece) {
         alert('Player ' + piece + ' wins!')
+        updateScoreboard(piece);
         return highlightWins(board, piece);
       } else  if (count === 5) {
         alert('Tie!');
@@ -72,6 +72,10 @@ var reset = function() {
 
   for (var i = 0; i < boxes.length; i++) {
     boxes[i].innerHTML = '';
+    boxes[i].style.backgroundColor = '#82D0D0';
+    boxes[i].style.color = 'black';
+    boxes[i].style.border = '1px solid black';
+
   }
   playerElement.innerHTML = 'Player X: Your Move';
 }
@@ -100,7 +104,15 @@ var highlightWins = function(board, piece) {
       if (board[i][j].innerHTML === piece) {
         board[i][j].style.backgroundColor = 'black';
         board[i][j].style.color = 'white';
+        board[i][j].style.border = 'white';
       }
     }
   }
+}
+
+var updateScoreboard = function(piece) {
+  var scoreBoard = document.getElementById(piece);
+  var newScore = parseInt(scoreBoard.innerHTML) + 1;
+
+  scoreBoard.innerHTML = newScore;
 }

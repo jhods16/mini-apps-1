@@ -17,8 +17,11 @@ var submitJSON = function() {
 //  append text to the CSV_display area
       var lines = result.split('\n');
       for (var i = 0; i < lines.length; i++) {
-        $('.CSV_display').append(lines[i] + '<br>');
+        $('.CSV_display').append(`<div class=${i}>${i+1}: ${lines[i]}<div>`);
       }
+    });
+    $( 'form' ).each(function(){
+        this.reset();
     });
   }) 
 }

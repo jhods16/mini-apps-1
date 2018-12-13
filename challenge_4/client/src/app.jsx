@@ -16,7 +16,10 @@ class App extends React.Component {
 
       player: true
     };
-    this.handleClick = this.handleClick.bind(this)
+    this.handleClick = this.handleClick.bind(this);
+    this.updateSquare = this.updateSquare.bind(this);
+    this.changePlayer = this.changePlayer.bind(this);
+    this.updateBoard = this.updateBoard.bind(this);
   }
 
   handleClick(e) {
@@ -46,12 +49,14 @@ class App extends React.Component {
     var col = parseInt(id[2]);
 
     if (this.state.player) {
-      board[row][col] = 1;
+      board[row][col] = 'A';
     } else {
-      board[row][col] = 2;
+      board[row][col] = 'B';
     }
-    
+
     this.setState({board: board})
+    this.checkHorizontal();
+    this.checkVertical();
   }
 
   changePlayer() {
@@ -68,7 +73,56 @@ class App extends React.Component {
     } else {
       square.setAttribute('style', 'background-image: url(/redpiece.png);');
     }
-    console.log(square);
+  }
+
+  checkHorizontal() {
+    var board = this.state.board;
+    var piece; 
+    var count = 0;
+
+    if (this.state.player) {
+      piece = 'A';
+    } else {
+      piece = 'B';
+    }
+    for (var row = 0; row < 6; row++) {
+      for (var col = 0; col < 8; col++) {
+        if (board[row][col] === piece) {
+          count++;
+        } else {
+          count = 0;
+        }
+        if (count === 4) {
+          alert(`Player ${piece} wins!`)
+          return;
+        }
+      }
+    }
+  }
+
+  checkVertical() {
+    var board = this.state.board;
+    var piece; 
+    var count = 0;
+
+    if (this.state.player) {
+      piece = 'A';
+    } else {
+      piece = 'B';
+    }
+    for (var col = 0; col < 8; col++) {
+      for (var row = 0; row < 6; row++) {
+        if (board[row][col] === piece) {
+          count++;
+        } else {
+          count = 0;
+        }
+        if (count === 4) {
+          alert(`Player ${piece} wins!`)
+          return;
+        }
+      }
+    }    
   }
 
   render() {

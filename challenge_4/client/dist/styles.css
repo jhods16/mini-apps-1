@@ -1,0 +1,15 @@
+.board {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+	grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+	height: 660px;
+	width: 770px;
+	border: 1px solid black;
+}
+
+
+.square {
+	height: 1fr;
+	width: 1fr;
+	border: 1px solid black;
+}

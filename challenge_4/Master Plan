@@ -1,0 +1,37 @@
+Master Plan
+
+Build a single page app implementation of Connect Four
+
+- use webpack (entry point = app.js) -- watch for changes
+- separate components into individual files 
+- use react for all views and bundle
+- game logic will be in client code
+	- detect a win or tie, display appropriate message
+	- refresh the page to restart the game
+- write four tests to run either inside the browser or node
+- minimal css
+
+Client
+	- app.js
+		- contains outline of page and board
+		- hold state 
+			-board: array of arrays 
+			-current player: boolean?
+		- has assessWin function that will assess possible solutions
+		- has change player function
+
+	- square.js
+		- will define one square on connect four
+
+	- boardview.js
+		- will display squares according to state
+
+
+- somewhere there will be a click handler that when clicked, updates the corresponding location in the state array likely will be mapped to each square and then called from the square, passing in some info about the square (ideally coordinates)
+	-> on click we call the assess win function and change player
+
+- will need to build up state over time (so gotta solve dat prob)
+
+Server
+
+- serve up public file 

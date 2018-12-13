@@ -1,0 +1,34 @@
+Master Plan
+
+Homepage
+- Checkout Button
+	- on click, takes you to the first form
+	- inits a new record in the database -- all values null
+
+- F1 - login
+	- collects name, email, password
+	- next button
+		- updates relevant records
+
+- F2 - address 
+	- line1, line2, city, state, zip, phone num
+	- next button
+		-updates relevant records
+
+- F3 - cc info
+	- cc#, expiration, cvv, billing zip
+	- next button
+		- updates relevant records
+
+- Confirmation page
+	- summarize data
+	- purchase button
+	- return to homepage
+
+mysql server start
+
+	-install mysql
+	-start mysql server (mysql .server start)
+	-install a module that will allow us to connect to the mysql server (specific to sql module (db?))
+	-connect obj to connect to the mysql server
+

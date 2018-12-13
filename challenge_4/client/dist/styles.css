@@ -12,4 +12,7 @@
 	height: 1fr;
 	width: 1fr;
 	border: 1px solid black;
+	background-size: 100px;
+	background-repeat: no-repeat;
+	background-position: center;
 }

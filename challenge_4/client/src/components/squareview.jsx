@@ -1,6 +1,6 @@
 var Square = function(props) {
   return (
-    <div className="square" onClick={props.handleClick}></div>
+    <div id={props.loc} className="square" onClick={props.handleClick}></div>
   )
 }
 

@@ -5,14 +5,14 @@ var Boardview = function(props) {
 
   return (
     <div className="board">
-      {board.map((row) => {
-        return row.map((square) => {
-         return <Square handleClick={props.handleClick}/>
+      {board.map((row, i) => {
+        return row.map((square, k) => {
+          var ik = [i, k].toString();
+          return <Square loc={ik} handleClick={props.handleClick}/>
         })
       })}
     </div>
     )
-  
 }
 
 export default Boardview;

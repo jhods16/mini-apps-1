@@ -19,8 +19,10 @@ class App extends React.Component {
     this.handleClick = this.handleClick.bind(this)
   }
 
-  handleClick() {
+  handleClick(e) {
     this.changePlayer();
+    this.updateSquare(e.target.id)
+    console.log(e.target.id)
   }
 
   changePlayer() {
@@ -28,6 +30,17 @@ class App extends React.Component {
 
     this.setState({player: !player});
   } 
+
+  updateSquare(id) {
+    var square = document.getElementById(id);
+
+    if (this.state.player) {
+      square.setAttribute('style', 'background-image: url(/greenpiece.png);');
+    } else {
+      square.setAttribute('style', 'background-image: url(/redpiece.png);');
+    }
+    console.log(square);
+  }
 
   render() {
     var player;
@@ -41,7 +54,7 @@ class App extends React.Component {
     return (
       <div>
         {player}
-        <Boardview board={this.state.board} handleClick={this.handleClick}/>
+        <Boardview board={this.state.board} handleClick={(e) => {this.handleClick(e)}}/>
         }
       </div>
       )

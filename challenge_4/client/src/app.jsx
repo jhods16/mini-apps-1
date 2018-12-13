@@ -20,10 +20,24 @@ class App extends React.Component {
   }
 
   handleClick(e) {
+    var board = this.state.board;
+    var id = e.target.id;
+    var row = parseInt(id[0]);
+    var col = parseInt(id[2]);
+
+    var checkRows = function() {
+      for (var i = 5; i >= row; i--) {
+        if (board[i][col] === 0) {
+          id = ''+ i + ',' + col + '';
+          return id;
+        } 
+      }
+      return id;
+    }
+    id = checkRows();
+    this.updateSquare(id);
+    this.updateBoard(id);
     this.changePlayer();
-    this.updateSquare(e.target.id);
-    this.updateBoard(e.target.id);
-    console.log(e.target.id);
   }
 
   updateBoard(id) {
@@ -36,10 +50,8 @@ class App extends React.Component {
     } else {
       board[row][col] = 2;
     }
-
-
+    
     this.setState({board: board})
-    console.log(this.state.board)
   }
 
   changePlayer() {

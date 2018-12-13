@@ -21,8 +21,25 @@ class App extends React.Component {
 
   handleClick(e) {
     this.changePlayer();
-    this.updateSquare(e.target.id)
-    console.log(e.target.id)
+    this.updateSquare(e.target.id);
+    this.updateBoard(e.target.id);
+    console.log(e.target.id);
+  }
+
+  updateBoard(id) {
+    var board = this.state.board;
+    var row = parseInt(id[0]);
+    var col = parseInt(id[2]);
+
+    if (this.state.player) {
+      board[row][col] = 1;
+    } else {
+      board[row][col] = 2;
+    }
+
+
+    this.setState({board: board})
+    console.log(this.state.board)
   }
 
   changePlayer() {

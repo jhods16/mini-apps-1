@@ -35,3 +35,53 @@ Client
 Server
 
 - serve up public file 
+
+check Diagonals
+
+	- check each row
+	- row = 0 - is there anything in there? no
+	- row = 2 - is there anything in there? yes
+		- ok, now check if the spot diagonal left or right 
+		also has the correct piece
+		- if it does, repeat this check moving the same direction
+		- if it does not, start over
+
+
+iterate through the rows until the last row
+	if row[col] = piece
+	
+	if (checkDiagonalsRight) {
+		checkDiagonalsRight(row+1, col+1)
+	}
+
+	if(checkDiagonalsLeft) {
+		checkDiagonalsLeft(row+1, col-1)
+	}
+
+checkDiagonalRight = function(row, col, piece, board) {
+	return board[row+1][col+1] === piece
+}
+
+checkDiagnoalLeft = function(row, col, piece, board) {
+	return board[row+1][col-1] === piece
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

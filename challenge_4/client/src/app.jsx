@@ -57,6 +57,7 @@ class App extends React.Component {
     this.setState({board: board})
     this.checkHorizontal();
     this.checkVertical();
+    this.checkDiagonal();
   }
 
   changePlayer() {
@@ -123,6 +124,67 @@ class App extends React.Component {
         }
       }
     }    
+  }
+
+  checkDiagonal() {
+    var board = this.state.board;
+    var piece; 
+    var count = 0;
+    var right = false;
+    var left = false;
+
+    if (this.state.player) {
+      piece = 'A';
+    } else {
+      piece = 'B';
+    }
+
+    var checkDiagonalRight = function(row, col, piece) {
+      var right; 
+
+      if (!board[row+1] || !board[row+1][col+1]) {
+        return right
+      } else {
+        if (board[row+1][col+1] === piece) {
+          right = true;
+          console.log(right, row, col); 
+        } else {
+          right = false;
+        }
+        return checkDiagonalRight(board[row+1][col+1]);
+      }
+    }
+
+    var checkDiagonalLeft = function(row, col, piece) {
+      var left; 
+
+      if (!board[row+1] || !board[row+1][col-1]) {
+        return left
+      } else {
+        if (board[row+1][col-1] === piece) {
+          left = true; 
+          console.log(left, row, col)
+        } else {
+          left = false;
+        }
+        return checkDiagonalLeft(board[row+1][col-1]);
+      }
+    }
+
+    // for (var row = 0; row < 6; row++) {
+    //   for (var col = 0; col < 7; col++) {
+    //     if (board[row][col] === piece) {
+    //       right = checkDiagonalRight(row, col, piece);
+    //       left = checkDiagonalLeft(row, col, piece);
+    //     } else {
+    //       right = false;
+    //       left = false;
+    //     }
+    //   }
+    // }
+    console.log(checkDiagonalRight(board[4][3]))
+    console.log('left?', left);
+    return right;
   }
 
   render() {

@@ -32,3 +32,12 @@ mysql server start
 	-install a module that will allow us to connect to the mysql server (specific to sql module (db?))
 	-connect obj to connect to the mysql server
 
+mongo -- require db in 
+
+
+Next:
+	- connect app and index.js 
+
+		-- connect server to index.js, call functions in index.js on get/post requests
+		- when checkout is clicked a new entry is created
+		- when next is clicked, the entry is updated

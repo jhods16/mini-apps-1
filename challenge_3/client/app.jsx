@@ -5,25 +5,20 @@ class App extends React.Component {
 		super(props);
 		this.state = {
 			formnum: 0,
-			login: {
-				name: '',
-				email: '',
-				password: ''
-			},
-			address: {
-				line1: '',
-				line2: '',
-				city: '',
-				state: '',
-				zip: '',
-				phone: ''
-			},
-			payment: {
-				cc: '',
-				expdate: '',
-				cvv: '',
-				billzip: ''
-			}
+			id: '',
+			name: '',
+			email: '',
+			password: '',
+			line1: '',
+			line2: '',
+			city: '',
+			state: '',
+			zip: '',
+			phone: '',
+			cc: '',
+			expdate: '',
+			cvv: '',
+			billzip: ''
 		};
 		this.handleCheckout = this.handleCheckout.bind(this);
 		this.handleNext = this.handleNext.bind(this);
@@ -36,18 +31,37 @@ class App extends React.Component {
 		event.preventDefault();
     console.log("submit!")
     console.log(event.target)
-
 	}
 
 	handleCheckout(event) {
-		this.setState({formnum: 1})
+		var formnum = this.state.formnum;
+		this.setState({formnum: formnum+1})
+		this.post(null, 'create', (id, err) => {
+			this.setState({id: id});
+		})
+		console.log(this.state.formnum)
 	}
 
 	handleNext(event) {
 		var formnum = this.state.formnum
 		this.setState({formnum: formnum+1})
-		console.log(this.state.login.name)
-		console.log(this.state.login.email)
+		var jsonState = JSON.stringify(this.state);
+	  this.post(jsonState, 'update', (err, res) => {
+			console.log(res);
+		})
+	}
+
+	post(data, route, successcb) {
+		console.log('post called')
+		 $.ajax({
+    		url: `http://localhost:3000/${route}`,
+    		method: 'POST',
+    		data: data,
+    		contentType: 'application/json',
+    		success: successcb,
+    		errorcb: (err) => {return console.error(err)}
+
+    	});
 	}
 
 	returnHome() {
@@ -55,11 +69,10 @@ class App extends React.Component {
 	}
 
 	handleChange(id, event) {
-		console.log(this.state.login.name)
 		var target = event.target
 		var name = target.name
-
-		this.setState({[id]: {[name]: event.target.value}})
+		var currName = this.state[name]
+		this.setState({[name]: currName += event.target.value})
 	}
 
 	render() {
@@ -71,7 +84,7 @@ class App extends React.Component {
 		}
 
 		if (formnum === 1) {
-			page = <Login name={this.state.login.name} handleSubmit={this.handleSubmit} email={this.state.login.email} password={this.state.login.password} handleNext={this.handleNext} handleChange={this.handleChange}/>
+			page = <Login name={this.state.name} handleSubmit={this.handleSubmit} email={this.state.email} password={this.state.password} handleNext={this.handleNext} handleChange={this.handleChange}/>
 		}
 
 		if (formnum === 2) {
@@ -83,7 +96,7 @@ class App extends React.Component {
 		}
 
 		if (formnum === 4) {
-			page = <Confirmation returnHome={this.returnHome} login={this.state.login.name} email={this.state.login.email} address={this.state.address.line1}/>
+			page = <Confirmation returnHome={this.returnHome} login={this.state.name} email={this.state.email} address={this.state.line1}/>
 		}
 
 		return (

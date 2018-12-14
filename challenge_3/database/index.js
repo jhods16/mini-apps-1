@@ -15,12 +15,12 @@ var demographics = new mongoose.Schema({
   line2: String,
   city: String,
   state: String,
-  zip: Number,
-  phone: Number,
-  cc: Number,
-  exp: Number,
-  cvv: Number,
-  billzip: Number
+  zip: String,
+  phone: String,
+  cc: String,
+  exp: String,
+  cvv: String,
+  billzip: String
 })
 
 var Demographics = mongoose.model('Demographics', demographics);
@@ -42,7 +42,7 @@ Demographics.find((err, demos) => {
 })
 
 
-var create = function(callback) {
+module.exports. create = function(callback) {
   var user = new Demographics({})
 
   user.save((err, user) => {
@@ -53,9 +53,9 @@ var create = function(callback) {
 // function that takes in state props as parameters
 // and updates the entry for that person
 
-var update = function(state, id, callback) {
+module.exports.update = function(id, state, callback) {
   Demographics.findByIdAndUpdate(id, state, (err, user) => {
     if (err) return console.error(err);
-    console.log(user);
+    callback(user)
   })
 }

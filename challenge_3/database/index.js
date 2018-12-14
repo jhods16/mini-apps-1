@@ -42,7 +42,7 @@ Demographics.find((err, demos) => {
 })
 
 
-module.exports. create = function(callback) {
+module.exports.create = function(callback) {
   var user = new Demographics({})
 
   user.save((err, user) => {

@@ -69,10 +69,11 @@ class App extends React.Component {
 	}
 
 	handleChange(id, event) {
-		var target = event.target
-		var name = target.name
-		var currName = this.state[name]
-		this.setState({[name]: currName += event.target.value})
+		var target = event.target;
+		var name = target.name;
+		var currVal = this.state[name];
+
+		this.setState({[name]: currVal + event.target.value})
 	}
 
 	render() {

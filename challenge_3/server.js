@@ -15,12 +15,11 @@ app.post('/create', (req, res) => {
   db.create((id) => {
     res.send(id)
   })
-  // res.send('thanks')
 })
 
 app.post('/update', (req, res) => {
   console.log(req.body.id)
-  db.update(req.body.id, req.body.name, (user) => {
+  db.update(req.body.id, req.body, (user) => {
     console.log(user)
     res.send(user);
   })
